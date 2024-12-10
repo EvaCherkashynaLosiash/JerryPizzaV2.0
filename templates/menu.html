@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #FFF7ED;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #7C2D12;
+            text-align: center;
+            margin-top: 20px;
+            padding: 0;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .item {
+            background-color: #fff;
+            margin: 15px;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+        .item:hover {
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+        .item h3 {
+            font-size: 1.2em;
+            color: #7C2D12;
+            margin-bottom: 10px;
+        }
+        .item p {
+            font-size: 1em;
+            color: #000;
+            margin-bottom: 10px;
+        }
+        .item .price {
+            font-size: 1.1em;
+            color: #7C2D12;
+            background-color: #FEDAAA;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .orderNow, a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #F97316;
+            color: #fff;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .orderNow:hover, a:hover {
+            background-color: #C2410C;
+            transform: scale(1.1);
+        }
+        .buttons {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #ea580c;
+            color: white;
+            border-radius: 30px;
+            font-size: 1rem;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .button:hover {
+            background-color: #C2410C;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <h1>Меню</h1>
+    <div class="sort-buttons">
+        <a href="/menu?sort=up" class="button">Найдешевша › найдорожча</a>
+        <a href="/menu?sort=desc" class="button">Найдорожча › найдешевша</a>
+    </div>
+
+    <ul>
+        {% for item in menu_items %}
+            <li class="item">
+                <h3>{{ item['name'] }}</h3>
+                <p>{{ item['description'] }}</p>
+                <p class="price">Ціна: {{ item['price'] }} грн</p>
+                <a href="/order" class="orderNow">Замовити зараз</a>
+                <a href="/add" class="orderNow"> Зроби сам!</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
